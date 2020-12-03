@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Today Weather</string>
+    <string name="dialog_permission_denied">Permission Denied</string>
+    <string name="dialog_permission_denied_msg">You denied a permission required for this feature. It can be enabled under the Applications Settings.</string>
+    <string name="dialog_go_to_settings">GO TO SETTINGS</string>
+    <string name="dialog_cancel">Cancel</string>
 </resources>
