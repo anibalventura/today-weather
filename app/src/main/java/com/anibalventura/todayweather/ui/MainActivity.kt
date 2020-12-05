@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             this.window.statusBarColor = ActivityCompat.getColor(this, R.color.primaryColor)
 
             when (destination.id) {
-                R.id.homeFragment -> setToolBarView(toolBar, true, false)
+                R.id.weatherFragment -> setToolBarView(toolBar, true, false)
             }
         }
     }
