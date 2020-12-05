@@ -12,4 +12,8 @@ object Constants {
     // Progress Dialog
     const val SHOW_PROGRESS = "show_progress"
     const val HIDE_PROGRESS = "hide_progress"
+
+    // Preferences
+    const val PREFERENCE_NAME = "today_weather_preference"
+    const val WEATHER_RESPONSE_DATA = "weather_response_data"
 }

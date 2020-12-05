@@ -14,9 +14,7 @@ import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
@@ -24,22 +22,21 @@ import com.anibalventura.todayweather.R
 import com.anibalventura.todayweather.data.models.WeatherResponse
 import com.anibalventura.todayweather.data.network.WeatherService
 import com.anibalventura.todayweather.databinding.FragmentWeatherBinding
+import com.anibalventura.todayweather.utils.*
 import com.anibalventura.todayweather.utils.Constants.API_KEY
 import com.anibalventura.todayweather.utils.Constants.BASE_URL
 import com.anibalventura.todayweather.utils.Constants.HIDE_PROGRESS
 import com.anibalventura.todayweather.utils.Constants.METRIC_UNIT
 import com.anibalventura.todayweather.utils.Constants.SHOW_PROGRESS
-import com.anibalventura.todayweather.utils.isNetworkAvailable
-import com.anibalventura.todayweather.utils.snackBarMsg
+import com.anibalventura.todayweather.utils.Constants.WEATHER_RESPONSE_DATA
 import com.google.android.gms.location.*
+import com.google.gson.Gson
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import retrofit.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class WeatherFragment : Fragment() {
 
@@ -57,7 +54,9 @@ class WeatherFragment : Fragment() {
         binding.lifecycleOwner = this
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
+        setHasOptionsMenu(true)
         getLocation()
+        setWeatherView()
 
         return binding.root
     }
@@ -173,8 +172,13 @@ class WeatherFragment : Fragment() {
                                 progressDialog(HIDE_PROGRESS)
 
                                 val weatherList: WeatherResponse = response.body()
-                                setWeatherView(weatherList)
-                                Log.i("DATA", "$weatherList")
+                                val weatherResponseToString = Gson().toJson(weatherList)
+
+                                sharedPref(requireContext()).edit()
+                                    .putString(WEATHER_RESPONSE_DATA, weatherResponseToString)
+                                    .apply()
+
+                                setWeatherView()
                             }
                             else -> {
                                 when (response.code()) {
@@ -200,42 +204,66 @@ class WeatherFragment : Fragment() {
     /** ===================================== Setup view. ===================================== **/
 
     @SuppressLint("SetTextI18n")
-    private fun setWeatherView(weatherList: WeatherResponse) {
-        for (i in weatherList.weather.indices) {
-            binding.tvWeather.text = weatherList.weather[i].main
-            binding.tvWeatherDescription.text = weatherList.weather[i].description
+    private fun setWeatherView() {
+        val weatherResponseJsonString =
+            sharedPref(requireContext()).getString(WEATHER_RESPONSE_DATA, "")
 
-            binding.tvTemperature.text =
-                weatherList.main.temp.toString() + getUnit(resources.configuration.toString())
-            binding.tvHumidity.text = "${weatherList.main.humidity.toString()}%"
+        if (!weatherResponseJsonString.isNullOrEmpty()) {
+            val weatherList =
+                Gson().fromJson(weatherResponseJsonString, WeatherResponse::class.java)
 
-            binding.tvMin.text =
-                weatherList.main.temp_min.toString() + getUnit(resources.configuration.toString()) + " min"
-            binding.tvMax.text =
-                weatherList.main.temp_max.toString() + getUnit(resources.configuration.toString()) + " max"
+            for (i in weatherList.weather.indices) {
+                binding.tvWeather.text = weatherList.weather[i].main
+                binding.tvWeatherDescription.text = weatherList.weather[i].description
 
-            binding.tvWindSpeed.text = weatherList.wind.speed.toString()
+                binding.tvTemperature.text =
+                    weatherList.main.temp.toString() + getUnit(resources.configuration.toString())
+                binding.tvHumidity.text = "${weatherList.main.humidity}%"
 
-            binding.tvLocationName.text = weatherList.name
-            binding.tvLocationCountry.text = weatherList.sys.country
-            binding.tvSunriseTime.text = getUnixTime(weatherList.sys.sunrise.toLong())
-            binding.tvSunsetTime.text = getUnixTime(weatherList.sys.sunset.toLong())
+                binding.tvMin.text =
+                    weatherList.main.temp_min.toString() + getUnit(resources.configuration.toString()) + " min"
+                binding.tvMax.text =
+                    weatherList.main.temp_max.toString() + getUnit(resources.configuration.toString()) + " max"
+
+                binding.tvWindSpeed.text = weatherList.wind.speed.toString()
+
+                binding.tvLocationName.text = weatherList.name
+                binding.tvLocationCountry.text = weatherList.sys.country
+                binding.tvSunriseTime.text = getUnixTime(weatherList.sys.sunrise.toLong())
+                binding.tvSunsetTime.text = getUnixTime(weatherList.sys.sunset.toLong())
+
+                when (weatherList.weather[i].icon) {
+                    "01d" -> binding.ivWeather.setImageResource(R.drawable.ic_sunny)
+                    "02d" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "03d" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "04d" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "04n" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "10d" -> binding.ivWeather.setImageResource(R.drawable.ic_rain)
+                    "11d" -> binding.ivWeather.setImageResource(R.drawable.ic_storm)
+                    "13d" -> binding.ivWeather.setImageResource(R.drawable.ic_snowflake)
+                    "01n" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "02n" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "03n" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "10n" -> binding.ivWeather.setImageResource(R.drawable.ic_cloud)
+                    "11n" -> binding.ivWeather.setImageResource(R.drawable.ic_rain)
+                    "13n" -> binding.ivWeather.setImageResource(R.drawable.ic_snowflake)
+                }
+            }
         }
     }
 
-    @Suppress("NAME_SHADOWING")
-    private fun getUnit(value: String): String {
-        var value = "˚C"
-        if ("US" == value || "LR" == value || "MM" == value) value = "˚F"
-        return value
+    /** ===================================== Options Menu. ===================================== **/
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_weather, menu)
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun getUnixTime(timex: Long): String {
-        val date = Date(timex * 1000L)
-        val sdf = SimpleDateFormat("HH:mm", Locale.UK)
-        sdf.timeZone = TimeZone.getDefault()
-        return sdf.format(date)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_refresh -> requestLocationData()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     /** ===================================== Fragment exit/close. ===================================== **/

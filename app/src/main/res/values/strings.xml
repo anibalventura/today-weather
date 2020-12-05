@@ -13,4 +13,5 @@
     <string name="ic_location">Location</string>
     <string name="ic_sunrise">Sunrise</string>
     <string name="ic_sunset">Sunset</string>
+    <string name="menu_refresh">Refresh</string>
 </resources>
