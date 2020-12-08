@@ -15,9 +15,10 @@ import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.anibalventura.todayweather.R
 import com.anibalventura.todayweather.data.models.WeatherResponse
 import com.anibalventura.todayweather.data.network.WeatherService
@@ -81,7 +82,7 @@ class WeatherFragment : Fragment() {
     }
 
     private fun permissionDeniedDialog() {
-        MaterialDialog(requireContext()).show {
+        MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             title(R.string.dialog_permission_denied)
             message(R.string.dialog_permission_denied_msg)
             negativeButton(R.string.dialog_cancel)
@@ -105,10 +106,14 @@ class WeatherFragment : Fragment() {
         val locationEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
 
         if (!locationEnabled) {
-            Toast.makeText(
-                requireContext(), "Your GPS is OFF. Please turn it ON.", Toast.LENGTH_SHORT
-            ).show()
-            startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                title(R.string.dialog_location_off)
+                message(R.string.dialog_location_off_msg)
+                negativeButton(R.string.dialog_cancel)
+                positiveButton(R.string.dialog_go_to_settings) {
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+            }
         }
 
         return locationEnabled
@@ -197,7 +202,7 @@ class WeatherFragment : Fragment() {
 
                 })
             }
-            else -> snackBarMsg(requireView(), "Not connected to the internet.")
+            else -> snackBarMsg(requireView(), getString(R.string.not_internet_connection))
         }
     }
 
@@ -260,7 +265,7 @@ class WeatherFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_refresh -> requestLocationData()
+            R.id.menu_refresh -> if (isLocationEnabled()) requestLocationData()
         }
 
         return super.onOptionsItemSelected(item)

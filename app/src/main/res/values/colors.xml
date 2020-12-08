@@ -7,4 +7,8 @@
     <color name="iconColor">#151515</color>
     <color name="dividerBackground">#e0e0e0</color>
     <color name="backgroundColor">#FFFFFF</color>
+
+    <!-- Images -->
+    <color name="primaryImageColor">#F04F5D73</color>
+    <color name="secondaryImageColor">#C88E96A1</color>
 </resources>

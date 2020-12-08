@@ -1,17 +1,20 @@
 <resources>
-    <string name="app_name">Today Weather</string>
+    <string name="app_name" translatable="false">Today Weather</string>
     <string name="dialog_permission_denied">Permission Denied</string>
     <string name="dialog_permission_denied_msg">You denied a permission required for this feature. It can be enabled under the Applications Settings.</string>
     <string name="dialog_go_to_settings">GO TO SETTINGS</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="progress_wait">Please wait&#8230;</string>
+    <string name="progress_wait">Please wait...</string>
     <string name="ic_snowflake">Snowflake</string>
     <string name="ic_humidity">Humidity</string>
     <string name="ic_temperature">Temperature</string>
     <string name="ic_wind">Wind</string>
-    <string name="miles_per_hour">mph</string>
+    <string name="weather_miles_per_hour" translatable="false">mph</string>
     <string name="ic_location">Location</string>
     <string name="ic_sunrise">Sunrise</string>
     <string name="ic_sunset">Sunset</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="dialog_location_off">GPS Off</string>
+    <string name="dialog_location_off_msg">Your GPS is Off. Please turn it On in order to get your current location and provide the weather info.</string>
+    <string name="not_internet_connection">Not connected to the internet.</string>
 </resources>

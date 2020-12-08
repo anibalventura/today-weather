@@ -10,16 +10,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvWeather"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
+            style="@style/ThemeCardView"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
             app:layout_constraintBottom_toTopOf="@+id/cvMinMax"
             app:layout_constraintEnd_toStartOf="@+id/cvTemperature"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -33,8 +28,7 @@
 
                 <ImageView
                     android:id="@+id/ivWeather"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
                     android:contentDescription="@string/ic_snowflake"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvWeather"
@@ -44,11 +38,7 @@
 
                 <TextView
                     android:id="@+id/tvWeather"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    style="@style/ThemePrimaryText"
                     app:layout_constraintBottom_toTopOf="@+id/tvWeatherDescription"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivWeather"
@@ -57,11 +47,9 @@
 
                 <TextView
                     android:id="@+id/tvWeatherDescription"
+                    style="@style/ThemeSecondaryText"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:maxLines="2"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tvWeather"
@@ -72,16 +60,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvTemperature"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
+            style="@style/ThemeCardView"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
             app:layout_constraintBottom_toTopOf="@+id/cvWind"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cvWeather"
@@ -94,8 +77,7 @@
 
                 <ImageView
                     android:id="@+id/ivTemperature"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
                     android:contentDescription="@string/ic_humidity"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvTemperature"
@@ -105,11 +87,7 @@
 
                 <TextView
                     android:id="@+id/tvTemperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    style="@style/ThemePrimaryText"
                     app:layout_constraintBottom_toTopOf="@+id/tvHumidity"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivTemperature"
@@ -118,10 +96,7 @@
 
                 <TextView
                     android:id="@+id/tvHumidity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
+                    style="@style/ThemeSecondaryText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivTemperature"
@@ -133,16 +108,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvMinMax"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
+            style="@style/ThemeCardView"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
             app:layout_constraintBottom_toTopOf="@+id/cvMoreInfo"
             app:layout_constraintEnd_toStartOf="@+id/cvWind"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,8 +125,7 @@
 
                 <ImageView
                     android:id="@+id/ivMinMax"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
                     android:contentDescription="@string/ic_temperature"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvMin"
@@ -166,11 +135,7 @@
 
                 <TextView
                     android:id="@+id/tvMin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    style="@style/ThemePrimaryText"
                     app:layout_constraintBottom_toTopOf="@+id/tvMax"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivMinMax"
@@ -179,10 +144,7 @@
 
                 <TextView
                     android:id="@+id/tvMax"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
+                    style="@style/ThemeSecondaryText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivMinMax"
@@ -193,16 +155,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvWind"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
+            style="@style/ThemeCardView"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
             app:layout_constraintBottom_toTopOf="@+id/cvMoreInfo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cvMinMax"
@@ -215,8 +172,7 @@
 
                 <ImageView
                     android:id="@+id/ivWind"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
                     android:contentDescription="@string/ic_wind"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tvWindSpeedPerHour"
@@ -226,11 +182,7 @@
 
                 <TextView
                     android:id="@+id/tvWindSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/primaryTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    style="@style/ThemePrimaryText"
                     app:layout_constraintBottom_toTopOf="@+id/tvWindSpeedPerHour"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivWind"
@@ -239,11 +191,8 @@
 
                 <TextView
                     android:id="@+id/tvWindSpeedPerHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/miles_per_hour"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
+                    style="@style/ThemeSecondaryText"
+                    android:text="@string/weather_miles_per_hour"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ivWind"
@@ -253,14 +202,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvMoreInfo"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            style="@style/ThemeCardView"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@android:color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvMinMax">
@@ -272,8 +218,7 @@
 
                 <ImageView
                     android:id="@+id/ivLocation"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
                     android:layout_marginStart="16dp"
                     android:contentDescription="@string/ic_location"
                     app:layout_constraintBottom_toTopOf="@+id/vLine"
@@ -284,12 +229,9 @@
 
                 <TextView
                     android:id="@+id/tvLocationName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/ThemePrimaryText"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/tvLocationCountry"
                     app:layout_constraintStart_toEndOf="@+id/ivLocation"
                     app:layout_constraintTop_toTopOf="@+id/ivLocation"
@@ -297,11 +239,8 @@
 
                 <TextView
                     android:id="@+id/tvLocationCountry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/ThemeSecondaryText"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/ivLocation"
                     app:layout_constraintStart_toEndOf="@+id/ivLocation"
                     app:layout_constraintTop_toBottomOf="@+id/tvLocationName"
@@ -319,52 +258,74 @@
 
                 <ImageView
                     android:id="@+id/ivSunrise"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="16dp"
+                    style="@style/ThemeWeatherImage"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
                     android:contentDescription="@string/ic_sunrise"
-                    app:layout_constraintBottom_toTopOf="@+id/tvSunriseTime"
-                    app:layout_constraintEnd_toStartOf="@+id/ivSunset"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSunriseLabel"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/vLine"
                     app:srcCompat="@drawable/ic_sunrise" />
 
                 <TextView
+                    android:id="@+id/tvSunriseLabel"
+                    style="@style/ThemePrimaryText"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/ic_sunrise"
+                    app:layout_constraintBottom_toTopOf="@+id/tvSunriseTime"
+                    app:layout_constraintEnd_toStartOf="@+id/ivSunset"
+                    app:layout_constraintHorizontal_bias="0.4"
+                    app:layout_constraintStart_toEndOf="@+id/ivSunrise"
+                    app:layout_constraintTop_toBottomOf="@+id/vLine"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
                     android:id="@+id/tvSunriseTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
+                    style="@style/ThemeSecondaryText"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tvSunsetTime"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSunriseLabel"
                     app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivSunrise"
+                    app:layout_constraintStart_toStartOf="@+id/tvSunriseLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSunriseLabel"
+                    tools:layout_editor_absoluteX="83dp"
                     tools:text="Sunrise" />
 
                 <ImageView
                     android:id="@+id/ivSunset"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    style="@style/ThemeWeatherImage"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
                     android:contentDescription="@string/ic_sunset"
-                    app:layout_constraintBottom_toTopOf="@+id/tvSunsetTime"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ivSunrise"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSunsetLabel"
+                    app:layout_constraintStart_toEndOf="@+id/tvSunriseLabel"
                     app:layout_constraintTop_toBottomOf="@+id/vLine"
                     app:srcCompat="@drawable/ic_sunset" />
 
                 <TextView
-                    android:id="@+id/tvSunsetTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryTextColor"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:id="@+id/tvSunsetLabel"
+                    style="@style/ThemePrimaryText"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/ic_sunset"
+                    app:layout_constraintBottom_toTopOf="@+id/tvSunsetTime"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSunriseTime"
-                    app:layout_constraintTop_toBottomOf="@+id/ivSunset"
+                    app:layout_constraintStart_toEndOf="@+id/ivSunset"
+                    app:layout_constraintTop_toBottomOf="@+id/vLine"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvSunsetTime"
+                    style="@style/ThemeSecondaryText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tvSunsetLabel"
+                    app:layout_constraintStart_toStartOf="@+id/tvSunsetLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSunsetLabel"
+                    tools:layout_editor_absoluteX="320dp"
                     tools:text="Sunset" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

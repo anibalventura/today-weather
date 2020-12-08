@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_permission_denied">Permiso denegado</string>
+    <string name="dialog_permission_denied_msg">Negaste un permiso requerido para esta función. Puedes habilitarlo en la Configuración de la Aplicacione.</string>
+    <string name="dialog_go_to_settings">IR A CONFIGURACIONES</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="progress_wait">Por favor espera...</string>
+    <string name="ic_snowflake">Copo de nieve</string>
+    <string name="ic_humidity">Humidity</string>
+    <string name="ic_temperature">Temperatura</string>
+    <string name="ic_wind">Viento</string>
+    <string name="ic_location">Ubicación</string>
+    <string name="ic_sunrise">Amanecer</string>
+    <string name="ic_sunset">Atardecer</string>
+    <string name="menu_refresh">Actualizar</string>
+    <string name="dialog_location_off">GPS Apagado</string>
+    <string name="dialog_location_off_msg">El GPS está apagado. Actívalo para obtener la ubicación actual y proporcionar la información meteorológica.</string>
+    <string name="not_internet_connection">No conectado a internet.</string>
+</resources>
