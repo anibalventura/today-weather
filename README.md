@@ -12,7 +12,7 @@ Weather data in a simple view based on modern Android application tech-stacks.
 * Show last weather data when no internet connection.
 * Spanish translation.
 
-<img src="images/app.png" align="right" width="25%"/>
+<img src="images/app.png" align="right" width="28%"/>
 
 ## Tech Stack & Open-source libraries
 * Minimum SDK level 21.
